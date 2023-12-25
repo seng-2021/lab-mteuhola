@@ -20,6 +20,8 @@ def encode(s):
             crypted+=codecs.encode(c,'rot13')
         elif c in digitmapping:
           crypted+=digitmapping[c]
+        #if character not a letter or in digitmapping
+        else: raise ValueError
 
     return crypted[:origlen]
 
