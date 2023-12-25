@@ -11,6 +11,8 @@ def encode(s):
     #pad to the max value for timing
     s = s.ljust(1000, 'x')
     for c in s:
+        if c in ['å', 'ä', 'ö']:
+            raise ValueError
         if c.isalpha():
             if c.islower():
                 c=c.upper()
@@ -19,7 +21,7 @@ def encode(s):
         elif c in digitmapping:
           crypted+=digitmapping[c]
 
-    return crypted
+    return crypted[:origlen]
 
 def decode(s):
     return encode(s)
