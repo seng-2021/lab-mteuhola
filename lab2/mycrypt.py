@@ -8,6 +8,8 @@ def encode(s):
     digitmapping = dict(zip('1234567890!"#€%&/()=','!"#€%&/()=1234567890'))
     if len(s) > 1000:
         raise ValueError
+    #pad to the max value for timing
+    s = s.ljust(1000, 'x')
     for c in s:
         if c.isalpha():
             if c.islower():
